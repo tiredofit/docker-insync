@@ -1,0 +1,38 @@
+#!/bin/bash
+
+### Set Defaults
+DOWNLOAD=${DOWNLOAD:-"link"}
+PROXY_MODE=${PROXY_MODE:-"NONE"}
+
+
+
+### Sanity Test
+if [ -z "${USERNAME}" ]; then
+    echo "** [insync] ERROR: Please set your \$USERNAME variable with the Google Drive Account"
+    exit 1
+fi
+
+if [ -z "${AUTH_CODE}" ]; then
+    echo "** [insync] ERROR: No Authentication Code Provided"
+    echo "** [insync] ERROR: Visit https://goo.gl/jv797S and follow the steps"
+    exit 1
+fi
+
+mkdir -p /data/${USERNAME}
+
+### Set Proxy
+if [ "$PROXY_MODE" != "NONE" ] || [ "$PROXY_MODE" = "none" ] || [ "$PROXY_MODE" != "system" ] || [ "$PROXY_MODE" = "SYSTEM" ] || [ "$PROXY_MODE" != "true" ] || [ "$PROXY_MODE" = "TRUE" ];  then
+  PROXY_MODE=NONE
+  echo "** [insync] Setting Proxy type to "$PROXY_MODE $PROXY_HOST" "$PROXY_PORT
+  /usr/bin/insync-headless set_proxy $PROXY_MODE $PROXY_TYPE $PROXY_HOST $PROXY_PORT $PROXY_USER $PROXY_PASS
+fi
+
+
+### Add Account
+/usr/bin/insync-headless add_account -a ${AUTH_CODE} -p /data/${USERNAME} -e DOWNLOAD
+# -n means no download do we want this
+
+/usr/bin/insync-headless set_autostart yes
+
+mkdir -p /tmp/state
+touch /tmp/state/10-insync-init

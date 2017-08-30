@@ -1,0 +1,3 @@
+#!/bin/bash
+
+TERM=xterm /usr/bin/insync-headless manage_selective_sync ${USERNAME}

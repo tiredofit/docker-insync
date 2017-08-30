@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  insync-app:
+    image: tiredofit/insync
+    container_name: insync-app
+    environment:
+      - ZABBIX_HOSTNAME=insync-app
+
+      - USERNAME=user@gmail.com
+      - AUTH_CODE=12345
+      - DOWNLOAD=open-document
+    volumes:
+      - ./data:/data
+    restart: always
+

@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+
+while [ ! -f /tmp/state/10-insync-init ]
+do
+  sleep 1
+done
+
+if [ ! -f /tmp/state/10-insync ]; then
+	echo '** [insync] To selectively sync specific folders, enter the container and execute "manage_sync"'
+	echo '** [insync] To manage your Ignored Files, enter the container and execute "manage_ignore"'
+fi
+
+echo "** [insync] Starting insync-headless for "$USERNAME
+exec /usr/bin/insync-headless start --no-daemon

@@ -1,0 +1,2 @@
+#!/bin/bash
+TERM=xterm /usr/bin/insync-headless manage_ignore_list ${USERNAME}
