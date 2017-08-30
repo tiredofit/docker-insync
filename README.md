@@ -71,8 +71,10 @@ The following directories are used for configuration and can be mapped for persi
 
 Along with the Environment Variables from the [Base image](https://hub.docker.com/r/tiredofit/debian), below is the complete list of available options that can be used to customize your installation.
 
+| Parameter | Description |
+|-----------|-------------|
 | `USERNAME | Your GDrive Username e.g. `user@gmail.com` |
-| `AUTH_CODE | Authorization Code provided by Google |
+| `AUTH_CODE` | Authorization Code provided by Google |
 | `DOWNLOAD` | How to download files `link` (.gdoc), `ms-office` (.docx), `open-document` (.odt) - Default `link` |
 | `PROXY_MODE` | Use Proxy `TRUE` or `FALSE - Default `FALSE` |
 | `PROXY_TYPE` | Type of Proxy `HTTP` `SOCKS4` `SOCKS5` |
