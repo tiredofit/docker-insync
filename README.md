@@ -73,10 +73,10 @@ Along with the Environment Variables from the [Base image](https://hub.docker.co
 
 | Parameter | Description |
 |-----------|-------------|
-| `USERNAME | Your GDrive Username e.g. `user@gmail.com` |
+| `USERNAME` | Your GDrive Username e.g. `user@gmail.com` |
 | `AUTH_CODE` | Authorization Code provided by Google |
 | `DOWNLOAD` | How to download files `link` (.gdoc), `ms-office` (.docx), `open-document` (.odt) - Default `link` |
-| `PROXY_MODE` | Use Proxy `TRUE` or `FALSE - Default `FALSE` |
+| `PROXY_MODE` | Use Proxy `TRUE` or `FALSE` - Default `FALSE` |
 | `PROXY_TYPE` | Type of Proxy `HTTP` `SOCKS4` `SOCKS5` |
 | `PROXY_HOST` | Name of Proxy Host e.g. `proxy` |
 | `PROXY_PORT` | Port of Proxy e.g. `3128` |
