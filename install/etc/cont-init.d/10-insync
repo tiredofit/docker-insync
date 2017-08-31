@@ -1,9 +1,8 @@
-#!/bin/bash
+#!/usr/bin/with-contenv bash
 
 ### Set Defaults
 DOWNLOAD=${DOWNLOAD:-"link"}
 PROXY_MODE=${PROXY_MODE:-"NONE"}
-
 
 
 ### Sanity Test
@@ -21,18 +20,21 @@ fi
 mkdir -p /data/${USERNAME}
 
 ### Set Proxy
-if [ "$PROXY_MODE" != "NONE" ] || [ "$PROXY_MODE" = "none" ] || [ "$PROXY_MODE" != "system" ] || [ "$PROXY_MODE" = "SYSTEM" ] || [ "$PROXY_MODE" != "true" ] || [ "$PROXY_MODE" = "TRUE" ];  then
+if [ "$PROXY_MODE" = "NONE" ] || [ "$PROXY_MODE" = "none" ] || [ "$PROXY_MODE" = "system" ] || [ "$PROXY_MODE" = "SYSTEM" ] || [ "$PROXY_MODE" = "true" ] || [ "$PROXY_MODE" = "TRUE" ];  then
   PROXY_MODE=NONE
+  /usr/bin/insync-headless set_proxy $PROXY_MODE
+else
   echo "** [insync] Setting Proxy type to "$PROXY_MODE $PROXY_HOST" "$PROXY_PORT
   /usr/bin/insync-headless set_proxy $PROXY_MODE $PROXY_TYPE $PROXY_HOST $PROXY_PORT $PROXY_USER $PROXY_PASS
 fi
 
 
 ### Add Account
-/usr/bin/insync-headless add_account -a ${AUTH_CODE} -p /data/${USERNAME} -e DOWNLOAD
+/usr/bin/insync-headless add_account -a ${AUTH_CODE} -p /data/${USERNAME} -e ${DOWNLOAD}
 # -n means no download do we want this
 
 /usr/bin/insync-headless set_autostart yes
 
 mkdir -p /tmp/state
 touch /tmp/state/10-insync-init
+
