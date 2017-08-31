@@ -4,7 +4,7 @@
 
 Dockerfile to build an [Insync](https://www.insynchq.com) container image to synchronize Google Drive.
 
-* This Container uses a [customized Debian Linux base](https://hub.docker.com/r/tiredofit/debian) which includes [s6 overlay](https://github.com/just-containers/s6-overlay) enabled for PID 1 Init capabilities, [zabbix-agent](https://zabbix.org) based on TRUNK compiled for individual container monitoring, Cron also installed along with other tools (bash,curl, less, logrotate, mariadb-client, nano, vim) for easier management. It also supports sending to external SMTP servers..
+* This Container uses a [customized Debian Linux base](https://hub.docker.com/r/tiredofit/debian) which includes [s6 overlay](https://github.com/just-containers/s6-overlay) enabled for PID 1 Init capabilities, [zabbix-agent](https://zabbix.org) based on TRUNK compiled for individual container monitoring, Cron also installed along with other tools (bash,curl, less, logrotate, nano, vim) for easier management. It also supports sending to external SMTP servers..
 
 
 
@@ -49,7 +49,7 @@ The following image tags are available:
 
 * The quickest way to get started is using [docker-compose](https://docs.docker.com/compose/). See the examples folder for a working [docker-compose.yml](examples/docker-compose.yml) that can be modified for development or production use.
 
-* Visit [https://goo.gl/jv797S](https://goo.gl/jv797S to authorize Insync for your Google Drive Account
+* Visit [https://goo.gl/jv797S](https://goo.gl/jv797S) to authorize Insync for your Google Drive Account
 
 * Set various [environment variables](#environment-variables) to understand the capabilities of this image.
 * Map [persistent storage](#data-volumes) for access to configuration and data files for backup.
@@ -73,10 +73,10 @@ Along with the Environment Variables from the [Base image](https://hub.docker.co
 
 | Parameter | Description |
 |-----------|-------------|
-| `USERNAME | Your GDrive Username e.g. `user@gmail.com` |
+| `USERNAME` | Your GDrive Username e.g. `user@gmail.com` |
 | `AUTH_CODE` | Authorization Code provided by Google |
 | `DOWNLOAD` | How to download files `link` (.gdoc), `ms-office` (.docx), `open-document` (.odt) - Default `link` |
-| `PROXY_MODE` | Use Proxy `TRUE` or `FALSE - Default `FALSE` |
+| `PROXY_MODE` | Use Proxy `TRUE` or `FALSE` - Default `FALSE` |
 | `PROXY_TYPE` | Type of Proxy `HTTP` `SOCKS4` `SOCKS5` |
 | `PROXY_HOST` | Name of Proxy Host e.g. `proxy` |
 | `PROXY_PORT` | Port of Proxy e.g. `3128` |
@@ -106,13 +106,3 @@ docker exec -it (whatever your container name is e.g. insync) bash
 # References
 
 * https://www.insynchq.com
-
-
-| `DOWNLOAD` | How to download files `link` (.gdoc), `ms-office` (.docx), `open-document` (.odt) - Default `link` |
-| `PROXY_MODE` | Use Proxy `TRUE` or `FALSE - Default `FALSE` |
-| `PROXY_TYPE` | Type of Proxy `HTTP` `SOCKS4` `SOCKS5` |
-| `PROXY_HOST` | Name of Proxy Host e.g. `proxy` |
-| `PROXY_PORT` | Port of Proxy e.g. `3128` |
-| `PROXY_USER` | (Optional) Username for Proxy e.g. `user` |
-| `PROXY_PASS` | (Optional) Password for Proxy e.g. `password` |
-
