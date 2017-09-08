@@ -1,5 +1,5 @@
 FROM tiredofit/debian:jessie
-MAINTAINER Dave Conroy <dave at tiredofit dot ca>
+LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
 ### Install Insync
 	RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C && \
