@@ -1,4 +1,4 @@
-FROM registry.selfdesign.org/docker/debian:stretch
+FROM tiredofit/debian:stretch
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
 ### Install Insync
