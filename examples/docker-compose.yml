@@ -7,10 +7,17 @@ services:
     environment:
       - ZABBIX_HOSTNAME=insync-app
 
-      - USERNAME=user@gmail.com
-      - AUTH_CODE=12345
-      - DOWNLOAD=open-document
+      - INSYNC1_USERNAME=user@gmail.com
+      - INSYNC1_AUTH_CODE=12345
+      - INSYNC_DOWNLOAD=open-document
     volumes:
       - ./data:/data
+      - ./config:/root/.config/Insync
     restart: always
+    networks:
+      - proxy-tier
 
+networks:
+  proxy-tier:
+    external:
+      name: nginx-proxy

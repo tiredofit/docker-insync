@@ -1,8 +1,16 @@
-# hub.docker.com/tiredofit/insync
+# hub.docker.com/r/tiredofit/insync
+
+[![Build Status](https://img.shields.io/docker/build/tiredofit/insync.svg)](https://hub.docker.com/r/tiredofit/insync)
+[![Docker Pulls](https://img.shields.io/docker/pulls/tiredofit/insync.svg)](https://hub.docker.com/r/tiredofit/insync)
+[![Docker Stars](https://img.shields.io/docker/stars/tiredofit/insync.svg)](https://hub.docker.com/r/tiredofit/insync)
+[![Docker 
+Layers](https://images.microbadger.com/badges/image/tiredofit/insync.svg)](https://microbadger.com/images/tiredofit/insync)
 
 # Introduction
 
 Dockerfile to build an [Insync](https://www.insynchq.com) container image to synchronize Google Drive.
+
+* Supports Multiple Accounts
 
 * This Container uses a [customized Debian Linux base](https://hub.docker.com/r/tiredofit/debian) which includes [s6 overlay](https://github.com/just-containers/s6-overlay) enabled for PID 1 Init capabilities, [zabbix-agent](https://zabbix.org) based on TRUNK compiled for individual container monitoring, Cron also installed along with other tools (bash,curl, less, logrotate, nano, vim) for easier management. It also supports sending to external SMTP servers..
 
@@ -35,11 +43,12 @@ You must have a license for Insync and authorize your Google Account with the Ap
 
 # Installation
 
-Automated builds of the image are available on [Registry](https://hub.docker.com/tiredofit/insync) and is the recommended method of installation.
+Automated builds of the image are available on [Registry](https://hub.docker.com/r/tiredofit/insync) and is the recommended method of 
+installation.
 
 
 ```bash
-docker pull hub.docker.com/tiredofit/insync:(imagetag)
+docker pull tiredofit/insync:(imagetag)
 ```
 
 The following image tags are available:
@@ -52,6 +61,7 @@ The following image tags are available:
 * Visit [https://goo.gl/jv797S](https://goo.gl/jv797S) to authorize Insync for your Google Drive Account
 
 * Set various [environment variables](#environment-variables) to understand the capabilities of this image.
+
 * Map [persistent storage](#data-volumes) for access to configuration and data files for backup.
 
 
@@ -65,7 +75,8 @@ The following directories are used for configuration and can be mapped for persi
 
 | Directory | Description |
 |-----------|-------------|
-| `/data` | Root Directory |
+| `/root/.config/Insync` | For configuration storage and Databases |
+| `/data` | Root Backup Directory |
 
 ### Environment Variables
 
@@ -73,9 +84,15 @@ Along with the Environment Variables from the [Base image](https://hub.docker.co
 
 | Parameter | Description |
 |-----------|-------------|
-| `USERNAME` | Your GDrive Username e.g. `user@gmail.com` |
-| `AUTH_CODE` | Authorization Code provided by Google |
-| `DOWNLOAD` | How to download files `link` (.gdoc), `ms-office` (.docx), `open-document` (.odt) - Default `link` |
+| `INSYNC1_USERNAME` | Primary Your GDrive Username e.g. `user@gmail.com` |
+| `INSYNC1_AUTH_CODE` | Primary Authorization Code provided by Google |
+| `INSYNC1_DOWNLOAD` | Primary How to download files `link` (.gdoc), `ms-office` (.docx), `open-document` (.odt) - Default `link` |
+| `INSYNC2_USERNAME` | Secondary Your GDrive Username e.g. `user@gmail.com` |
+| `INSYNC2_AUTH_CODE` | Secondary Authorization Code provided by Google |
+| `INSYNC2_DOWNLOAD` | Secondary How to download files `link` (.gdoc), `ms-office` (.docx), `open-document` (.odt) - Default `link` |
+| `INSYNC3_USERNAME` | Third Your GDrive Username e.g. `user@gmail.com` |
+| `INSYNC3_AUTH_CODE` | Third Authorization Code provided by Google |
+| `INSYNC3_DOWNLOAD` | Third How to download files `link` (.gdoc), `ms-office` (.docx), `open-document` (.odt) - Default `link` |
 | `PROXY_MODE` | Use Proxy `TRUE` or `FALSE` - Default `FALSE` |
 | `PROXY_TYPE` | Type of Proxy `HTTP` `SOCKS4` `SOCKS5` |
 | `PROXY_HOST` | Name of Proxy Host e.g. `proxy` |

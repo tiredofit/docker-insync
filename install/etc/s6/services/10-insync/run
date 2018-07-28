@@ -10,5 +10,16 @@ if [ ! -f /tmp/state/10-insync ]; then
 	echo '** [insync] To manage your Ignored Files, enter the container and execute "manage_ignore"'
 fi
 
-echo "** [insync] Starting insync-headless for "$USERNAME
+NUM=`printenv | sort | grep '\INSYNC.*USERNAME' | wc -l`
+    for (( i = 1; i <= $NUM; i++ ))
+    do
+
+        INSYNC_USERNAME=INSYNC${i}_USERNAME
+        INSYNC_DOWNLOAD=INSYNC${i}_DOWNLOAD
+        INSYNC_AUTH_CODE=INSYNC${i}_AUTH_CODE
+
+        mkdir -p /data/${!INSYNC_USERNAME}
+        echo '** [insync] Starting insync-headless for '${!INSYNC_USERNAME}
+    done
+
 exec /usr/bin/insync-headless start --no-daemon
