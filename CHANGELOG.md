@@ -1,3 +1,8 @@
+## 1.4 2019-04-27 <samburney@github>
+
+* Update Locale to fix error messages and sync issues
+* Fix INSYNC*_DOWNLOAD vars to properly download msword types
+
 ## 1.3 2018-07-28 <dave at tiredofit dot ca>
 
 * Add Zabbix Monitoring Scripts
