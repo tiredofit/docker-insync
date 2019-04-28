@@ -5,7 +5,7 @@ if [ "$DEBUG_MODE" = "TRUE" ] || [ "$DEBUG_MODE" = "true" ];  then
 fi
 
 ### Set Defaults
-INSYNC1_DOWNLOAD=${DOWNLOAD:-"open-document"}
+INSYNC1_DOWNLOAD=${INSYNC1_DOWNLOAD:-"open-document"}
 PROXY_MODE=${PROXY_MODE:-"NONE"}
 
 mkdir -p /root/.config/Insync
@@ -50,7 +50,7 @@ if insync-headless get_status | grep 'UNLINKED' > dev/null; then
 
         mkdir -p /data/${!INSYNC_USERNAME}
         echo '** [insync] Adding Account '${!INSYNC_USERNAME}
-        /usr/bin/insync-headless add_account -a ${!INSYNC_AUTH_CODE} -p /data/${!INSYNC_USERNAME} -e ${!INSYNC_DOWNLOAD}          
+        echo yes | /usr/bin/insync-headless add_account -a ${!INSYNC_AUTH_CODE} -p /data/${!INSYNC_USERNAME} -e ${!INSYNC_DOWNLOAD}
     done
 fi
 /usr/bin/insync-headless set_autostart yes
