@@ -22,4 +22,4 @@ NUM=`printenv | sort | grep '\INSYNC.*USERNAME' | wc -l`
         echo '** [insync] Starting insync-headless for '${!INSYNC_USERNAME}
     done
 
-exec /usr/bin/insync-headless start --no-daemon
+sudo -u insync exec /usr/bin/insync-headless start --no-daemon

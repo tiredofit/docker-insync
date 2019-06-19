@@ -75,8 +75,7 @@ The following directories are used for configuration and can be mapped for persi
 
 | Directory | Description |
 |-----------|-------------|
-| `/root/.config/Insync` | For configuration storage and Databases |
-| `/data` | Root Backup Directory |
+| `/data` | Backup and Configuration Directory |
 
 ### Environment Variables
 

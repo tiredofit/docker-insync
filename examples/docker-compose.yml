@@ -12,12 +12,4 @@ services:
       - INSYNC_DOWNLOAD=open-document
     volumes:
       - ./data:/data
-      - ./config:/root/.config/Insync
     restart: always
-    networks:
-      - proxy-tier
-
-networks:
-  proxy-tier:
-    external:
-      name: nginx-proxy

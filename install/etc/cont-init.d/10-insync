@@ -8,7 +8,8 @@ fi
 INSYNC1_DOWNLOAD=${INSYNC1_DOWNLOAD:-"open-document"}
 PROXY_MODE=${PROXY_MODE:-"NONE"}
 
-mkdir -p /root/.config/Insync
+mkdir -p /data/.config/Insync
+chown -R insync /data
 
 ### Sanity Test
 if [ -z "${INSYNC1_USERNAME}" ]; then
@@ -22,23 +23,29 @@ if [ -z "${INSYNC1_AUTH_CODE}" ]; then
     exit 1
 fi
 
-mkdir -p /data/${INSYNC1_USERNAME}
+### Upgrade catcher
+if [ -d "/root/.config/Insync" ]; then
+  echo "** [insync] Old version of Insync Image detected, copying files to new unified storage area. Please delete old volume mapping to `/root/.config/Insync`"
+  chown -R insync /data/.config/Insync
+fi
 
-/usr/bin/insync-headless start
+sudo -u insync mkdir -p /data/${INSYNC1_USERNAME}
+
+sudo -u insync /usr/bin/insync-headless start
 echo '** [insync] Sleeping 10 seconds..'
 sleep 10
 
 ### Set Proxy
 if [ "$PROXY_MODE" = "NONE" ] || [ "$PROXY_MODE" = "none" ] || [ "$PROXY_MODE" = "system" ] || [ "$PROXY_MODE" = "SYSTEM" ] || [ "$PROXY_MODE" = "true" ] || [ "$PROXY_MODE" = "TRUE" ];  then
   PROXY_MODE=NONE
-  /usr/bin/insync-headless set_proxy $PROXY_MODE
+  sudo -u insync /usr/bin/insync-headless set_proxy $PROXY_MODE
 else
   echo "** [insync] Setting Proxy type to "$PROXY_MODE $PROXY_HOST" "$PROXY_PORT
-  /usr/bin/insync-headless set_proxy $PROXY_MODE $PROXY_TYPE $PROXY_HOST $PROXY_PORT $PROXY_USER $PROXY_PASS
+  sudo -u insync /usr/bin/insync-headless set_proxy $PROXY_MODE $PROXY_TYPE $PROXY_HOST $PROXY_PORT $PROXY_USER $PROXY_PASS
 fi
 
 ### Check to see if accounts are unlinked
-if insync-headless get_status | grep 'UNLINKED' > dev/null; then 
+if sudo -u insync-headless get_status | grep 'UNLINKED' > dev/null; then 
   echo '** [insync] Attempting to Authorize Accounts'
     NUM=`printenv | sort | grep '\INSYNC.*USERNAME' | wc -l`
     for (( i = 1; i <= $NUM; i++ ))
@@ -48,12 +55,12 @@ if insync-headless get_status | grep 'UNLINKED' > dev/null; then
         INSYNC_DOWNLOAD=INSYNC${i}_DOWNLOAD
         INSYNC_AUTH_CODE=INSYNC${i}_AUTH_CODE
 
-        mkdir -p /data/${!INSYNC_USERNAME}
+        sudo -u insync mkdir -p /data/${!INSYNC_USERNAME}
         echo '** [insync] Adding Account '${!INSYNC_USERNAME}
-        echo yes | /usr/bin/insync-headless add_account -a ${!INSYNC_AUTH_CODE} -p /data/${!INSYNC_USERNAME} -e ${!INSYNC_DOWNLOAD}
+        echo yes | sudo -u insync /usr/bin/insync-headless add_account -a ${!INSYNC_AUTH_CODE} -p /data/${!INSYNC_USERNAME} -e ${!INSYNC_DOWNLOAD}
     done
 fi
-/usr/bin/insync-headless set_autostart yes
+sudo -u insync /usr/bin/insync-headless set_autostart yes
 pkill insync-headless
 
 mkdir -p /tmp/state
