@@ -1,3 +1,7 @@
+## 2.0.4 2019-06-20 <gitsf@github>
+
+* Allow insync to gracefully exit when container shutting down
+
 ## 2.0.3 2019-06-20 <dave at tiredofit dot ca>
 
 * Create alias to make insync-headless work when manually entering container
