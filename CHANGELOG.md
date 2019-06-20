@@ -1,3 +1,7 @@
+## 2.0.5 2019-06-20 <gitsf@github>
+
+* Fix spelling mistake 
+
 ## 2.0.4 2019-06-20 <gitsf@github>
 
 * Allow insync to gracefully exit when container shutting down
