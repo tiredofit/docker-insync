@@ -11,6 +11,8 @@ RUN set -x && \
     ### Add Users
     addgroup --gid 12345 insync && \
     adduser --uid 12345 --gid 12345 --gecos "Insync" --disabled-password insync && \
+    rm -rf /home/insync && \
+    mkdir -p /data && \
     ln -sf /data /home/insync && \
     \
     ### Install Insync

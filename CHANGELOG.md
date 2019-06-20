@@ -1,3 +1,7 @@
+## 2.0.1 2019-06-19 <dave at tiredofit dot ca>
+
+* Regression with new format of handling configuration
+
 ## 2.0 2019-06-19 <dave at tiredofit dot ca>
 
 * New unified configuration and data directory. Image should be able to catch anyone using old volume mapping of `/root/.config/Insync`. All you need to do is map `/data`

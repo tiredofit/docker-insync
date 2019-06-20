@@ -10,6 +10,7 @@ services:
       - INSYNC1_USERNAME=user@gmail.com
       - INSYNC1_AUTH_CODE=12345
       - INSYNC_DOWNLOAD=open-document
+
     volumes:
       - ./data:/data
     restart: always

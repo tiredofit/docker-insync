@@ -8,8 +8,8 @@ fi
 INSYNC1_DOWNLOAD=${INSYNC1_DOWNLOAD:-"open-document"}
 PROXY_MODE=${PROXY_MODE:-"NONE"}
 
-mkdir -p /data/.config/Insync
-chown -R insync /data
+chown -R insync: /data
+sudo -u insync mkdir -p /data/.config/Insync
 
 ### Sanity Test
 if [ -z "${INSYNC1_USERNAME}" ]; then
@@ -26,7 +26,8 @@ fi
 ### Upgrade catcher
 if [ -d "/root/.config/Insync" ]; then
   echo "** [insync] Old version of Insync Image detected, copying files to new unified storage area. Please delete old volume mapping to `/root/.config/Insync`"
-  chown -R insync /data/.config/Insync
+  cp -R /root/.config/Insync /data/.config/
+  chown -R insync: /data/.config/Insync
 fi
 
 sudo -u insync mkdir -p /data/${INSYNC1_USERNAME}
