@@ -46,7 +46,7 @@ else
 fi
 
 ### Check to see if accounts are unlinked
-if sudo -u insync-headless get_status | grep 'UNLINKED' > dev/null; then 
+if sudo -u insync insync-headless get_status | grep 'UNLINKED' > dev/null; then 
   echo '** [insync] Attempting to Authorize Accounts'
     NUM=`printenv | sort | grep '\INSYNC.*USERNAME' | wc -l`
     for (( i = 1; i <= $NUM; i++ ))

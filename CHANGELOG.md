@@ -1,3 +1,7 @@
+## 2.0.2 2019-06-20 <dave at tiredofit dot ca>
+
+* Further Fixes to 2.x Release
+
 ## 2.0.1 2019-06-19 <dave at tiredofit dot ca>
 
 * Regression with new format of handling configuration
