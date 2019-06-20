@@ -31,7 +31,7 @@ if [ -d "/root/.config/Insync" ]; then
 fi
 
 ### Sudo Hack for entering inside the container
-echo "alias insync-headlesss='sudo -u insync insync-headless'" > /root/.bashrc
+echo "alias insync-headless='sudo -u insync insync-headless'" > /root/.bashrc
 
 sudo -u insync mkdir -p /data/${INSYNC1_USERNAME}
 
