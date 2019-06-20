@@ -1,3 +1,7 @@
+## 2.0.3 2019-06-20 <dave at tiredofit dot ca>
+
+* Create alias to make insync-headless work when manually entering container
+
 ## 2.0.2 2019-06-20 <dave at tiredofit dot ca>
 
 * Further Fixes to 2.x Release

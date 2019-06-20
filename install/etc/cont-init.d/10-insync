@@ -30,6 +30,9 @@ if [ -d "/root/.config/Insync" ]; then
   chown -R insync: /data/.config/Insync
 fi
 
+### Sudo Hack for entering inside the container
+echo "alias insync-headlesss='sudo -u insync insync-headless'" > /root/.bashrc
+
 sudo -u insync mkdir -p /data/${INSYNC1_USERNAME}
 
 sudo -u insync /usr/bin/insync-headless start
