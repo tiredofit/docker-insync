@@ -1,3 +1,7 @@
+## 2.0.6 2019-07-03 <gitsf@github>
+
+* Updates for `manage_sync` and `manage_ignore` scripts
+
 ## 2.0.5 2019-06-20 <gitsf@github>
 
 * Fix spelling mistake 

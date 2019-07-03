@@ -1,3 +1,2 @@
-#!/bin/bash
-
-TERM=xterm /usr/bin/insync-headless manage_selective_sync ${USERNAME}
+#!/usr/bin/with-contenv bash
+TERM=xterm sudo -u insync exec /usr/bin/insync-headless manage_selective_sync $1 
