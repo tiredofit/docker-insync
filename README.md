@@ -14,8 +14,6 @@ Dockerfile to build an [Insync](https://www.insynchq.com) container image to syn
 
 * This Container uses a [customized Debian Linux base](https://hub.docker.com/r/tiredofit/debian) which includes [s6 overlay](https://github.com/just-containers/s6-overlay) enabled for PID 1 Init capabilities, [zabbix-agent](https://zabbix.org) for individual container monitoring, Cron also installed along with other tools (bash,curl, less, logrotate, nano, vim) for easier management. It also supports sending to external SMTP servers..
 
-
-
 [Changelog](CHANGELOG.md)
 
 # Authors
