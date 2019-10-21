@@ -1,3 +1,7 @@
+## 2.0.7 2019-10-21 <samburney@github>
+
+* Updates to Zabbix Monitoring
+
 ## 2.0.6 2019-07-03 <gitsf@github>
 
 * Updates for `manage_sync` and `manage_ignore` scripts
