@@ -1,4 +1,4 @@
-FROM tiredofit/debian:stretch
+FROM tiredofit/debian:buster
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
 ### Set locale to C.UTF-8
@@ -17,7 +17,7 @@ RUN set -x && \
     \
     ### Install Insync
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C && \
-    echo deb http://apt.insynchq.com/debian stretch non-free contrib >>/etc/apt/sources.list.d/insync.list && \
+    echo deb http://apt.insynchq.com/debian buster non-free contrib >>/etc/apt/sources.list.d/insync.list && \
     apt-get update && \
     apt-get install -y insync-headless && \
     

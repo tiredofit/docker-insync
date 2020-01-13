@@ -1,8 +1,7 @@
 #!/usr/bin/with-contenv bash
 
-if [ "$DEBUG_MODE" = "TRUE" ] || [ "$DEBUG_MODE" = "true" ];  then
-  set -x
-fi
+for s in /assets/functions/*; do source $s; done
+PROCESS_NAME="insync"
 
 ### Set Defaults
 INSYNC1_DOWNLOAD=${INSYNC1_DOWNLOAD:-"open-document"}
@@ -12,20 +11,12 @@ chown -R insync: /data
 sudo -u insync mkdir -p /data/.config/Insync
 
 ### Sanity Test
-if [ -z "${INSYNC1_USERNAME}" ]; then
-    echo "** [insync] ERROR: Please set your \$INSYNC1_USERNAME variable with the Google Drive Account"
-    exit 1
-fi
-
-if [ -z "${INSYNC1_AUTH_CODE}" ]; then
-    echo "** [insync] ERROR: No Authentication Code Provided"
-    echo "** [insync] ERROR: Visit https://goo.gl/jv797S and follow the steps"
-    exit 1
-fi
+sanity_var INSYNC1_USERNAME "Google Drive Account"
+sanity_var INSYNC1_AUTH_CODE "Authentication Code - Visit https://goo.gl/jv797S and follow the steps"    
 
 ### Upgrade catcher
 if [ -d "/root/.config/Insync" ]; then
-  echo "** [insync] Old version of Insync Image detected, copying files to new unified storage area. Please delete old volume mapping to `/root/.config/Insync`"
+  print_warn "Old version of Insync Image detected, copying files to new unified storage area. Please delete old volume mapping to `/root/.config/Insync`"
   cp -R /root/.config/Insync /data/.config/
   chown -R insync: /data/.config/Insync
 fi
@@ -36,7 +27,7 @@ echo "alias insync-headless='sudo -u insync insync-headless'" > /root/.bashrc
 sudo -u insync mkdir -p /data/${INSYNC1_USERNAME}
 
 sudo -u insync /usr/bin/insync-headless start
-echo '** [insync] Sleeping 10 seconds..'
+print_notice "Sleeping 10 seconds"
 sleep 10
 
 ### Set Proxy
@@ -50,7 +41,7 @@ fi
 
 ### Check to see if accounts are unlinked
 if sudo -u insync insync-headless get_status | grep 'UNLINKED' > dev/null; then 
-  echo '** [insync] Attempting to Authorize Accounts'
+  print_notice "Attempting to Authorize Accounts"
     NUM=`printenv | sort | grep '\INSYNC.*USERNAME' | wc -l`
     for (( i = 1; i <= $NUM; i++ ))
     do
@@ -60,12 +51,11 @@ if sudo -u insync insync-headless get_status | grep 'UNLINKED' > dev/null; then
         INSYNC_AUTH_CODE=INSYNC${i}_AUTH_CODE
 
         sudo -u insync mkdir -p /data/${!INSYNC_USERNAME}
-        echo '** [insync] Adding Account '${!INSYNC_USERNAME}
+        print_notice "Adding Account ${!INSYNC_USERNAME}"
         echo yes | sudo -u insync /usr/bin/insync-headless add_account -a ${!INSYNC_AUTH_CODE} -p /data/${!INSYNC_USERNAME} -e ${!INSYNC_DOWNLOAD}
     done
 fi
 sudo -u insync /usr/bin/insync-headless set_autostart yes
 pkill insync-headless
 
-mkdir -p /tmp/state
-touch /tmp/state/10-insync-init
+liftoff

@@ -1,25 +1,23 @@
 #!/usr/bin/with-contenv bash
 
-while [ ! -f /tmp/state/10-insync-init ]
-do
-  sleep 1
-done
+for s in /assets/functions/*; do source $s; done
+PROCESS_NAME="insync"
+check_container_initialized
+check_service_initialized init
 
-if [ ! -f /tmp/state/10-insync ]; then
-	echo '** [insync] To selectively sync specific folders, enter the container and execute "manage_sync"'
-	echo '** [insync] To manage your Ignored Files, enter the container and execute "manage_ignore"'
-fi
+print_info "To selectively sync specific folders, enter the container and execute 'manage_sync'"
+echo "To manage your Ignored Files, enter the container and execute 'manage_ignore'"
 
 NUM=`printenv | sort | grep '\INSYNC.*USERNAME' | wc -l`
-    for (( i = 1; i <= $NUM; i++ ))
+for (( i = 1; i <= $NUM; i++ ))
     do
+    INSYNC_USERNAME=INSYNC${i}_USERNAME
+    INSYNC_DOWNLOAD=INSYNC${i}_DOWNLOAD
+    INSYNC_AUTH_CODE=INSYNC${i}_AUTH_CODE
 
-        INSYNC_USERNAME=INSYNC${i}_USERNAME
-        INSYNC_DOWNLOAD=INSYNC${i}_DOWNLOAD
-        INSYNC_AUTH_CODE=INSYNC${i}_AUTH_CODE
-
-        mkdir -p /data/${!INSYNC_USERNAME}
-        echo '** [insync] Starting insync-headless for '${!INSYNC_USERNAME}
+    mkdir -p /data/${!INSYNC_USERNAME}
+    print_info "Starting insync-headless for '${!INSYNC_USERNAME}'"
     done
 
+liftoff
 sudo -u insync exec /usr/bin/insync-headless start --no-daemon

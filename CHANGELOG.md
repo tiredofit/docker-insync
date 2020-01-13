@@ -1,3 +1,13 @@
+## 2.2.0 2020-01-12 <dave at tiredofit dot ca>
+
+   ### Added
+      - Update to support new tiredofit/debian base image
+
+
+## 2.1.0 2019-10-21 <dave at tiredofit dot ca>
+
+* Debian Buster
+
 ## 2.0.7 2019-10-21 <samburney@github>
 
 * Updates to Zabbix Monitoring
