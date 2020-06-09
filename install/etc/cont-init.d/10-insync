@@ -1,11 +1,8 @@
 #!/usr/bin/with-contenv bash
 
-for s in /assets/functions/*; do source $s; done
+source /assets/functions/00-container
+prepare_service
 PROCESS_NAME="insync"
-
-### Set Defaults
-INSYNC1_DOWNLOAD=${INSYNC1_DOWNLOAD:-"open-document"}
-PROXY_MODE=${PROXY_MODE:-"NONE"}
 
 chown -R insync: /data
 sudo -u insync mkdir -p /data/.config/Insync

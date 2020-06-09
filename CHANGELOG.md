@@ -1,3 +1,9 @@
+## 2.3.0 2020-06-09 <dave at tiredofit dot ca>
+
+   ### Added
+      - Update to support new tiredofit/debian 5.0.0 base image
+
+
 ## 2.2.0 2020-01-12 <dave at tiredofit dot ca>
 
    ### Added

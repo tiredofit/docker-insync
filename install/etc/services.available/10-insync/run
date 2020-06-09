@@ -1,12 +1,13 @@
 #!/usr/bin/with-contenv bash
 
-for s in /assets/functions/*; do source $s; done
+source /assets/functions/00-container
+prepare_service defaults single
 PROCESS_NAME="insync"
 check_container_initialized
 check_service_initialized init
 
 print_info "To selectively sync specific folders, enter the container and execute 'manage_sync'"
-echo "To manage your Ignored Files, enter the container and execute 'manage_ignore'"
+print_info "To manage your Ignored Files, enter the container and execute 'manage_ignore'"
 
 NUM=`printenv | sort | grep '\INSYNC.*USERNAME' | wc -l`
 for (( i = 1; i <= $NUM; i++ ))
