@@ -1,3 +1,9 @@
+## 2.3.1 2020-12-01 <dave at tiredofit dot ca>
+
+   ### Added
+      - Add ability to execute custom scripts when mounted from /assets/custom-scripts
+
+
 ## 2.3.0 2020-06-09 <dave at tiredofit dot ca>
 
    ### Added
