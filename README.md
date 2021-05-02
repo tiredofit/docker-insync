@@ -1,6 +1,5 @@
 # hub.docker.com/r/tiredofit/insync
 
-[![Build Status](https://img.shields.io/docker/build/tiredofit/insync.svg)](https://hub.docker.com/r/tiredofit/insync)
 [![Docker Pulls](https://img.shields.io/docker/pulls/tiredofit/insync.svg)](https://hub.docker.com/r/tiredofit/insync)
 [![Docker Stars](https://img.shields.io/docker/stars/tiredofit/insync.svg)](https://hub.docker.com/r/tiredofit/insync)
 [![Docker
