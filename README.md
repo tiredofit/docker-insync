@@ -1,11 +1,11 @@
-# hub.docker.com/r/tiredofit/insync
+# github.com/tiredofit/docker-insync
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/tiredofit/insync.svg)](https://hub.docker.com/r/tiredofit/insync)
 [![Docker Stars](https://img.shields.io/docker/stars/tiredofit/insync.svg)](https://hub.docker.com/r/tiredofit/insync)
 [![Docker
 Layers](https://images.microbadger.com/badges/image/tiredofit/insync.svg)](https://microbadger.com/images/tiredofit/insync)
 
-## Introduction
+## About
 
 Dockerfile to build an [Insync](https://www.insynchq.com) container image to synchronize Google Drive.
 
@@ -15,7 +15,7 @@ Dockerfile to build an [Insync](https://www.insynchq.com) container image to syn
 
 [Changelog](CHANGELOG.md)
 
-## Authors
+## Maintainer
 
 - [Dave Conroy](https://github.com/tiredofit/)
 
@@ -37,7 +37,7 @@ Dockerfile to build an [Insync](https://www.insynchq.com) container image to syn
   - [Shell Access](#shell-access)
 - [References](#references)
 
-## Prerequisites
+## Prerequisites and Assumptions
 
 You must have a license for Insync and authorize your Google Account with the Application.
 
@@ -68,7 +68,7 @@ The following image tags are available:
 
 ## Configuration
 
-### Data-Volumes
+### Persistent Storage
 
 The container will create a folder for the account to be synced upon startup.
 

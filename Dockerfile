@@ -1,5 +1,5 @@
-FROM tiredofit/debian:buster
-LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
+FROM docker.io/tiredofit/debian:buster
+LABEL maintainer="Dave Conroy (github.com/tiredofit)"
 
 ### Set locale to C.UTF-8
 ENV LANG='C.UTF-8' \

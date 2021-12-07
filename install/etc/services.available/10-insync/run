@@ -17,7 +17,7 @@ for (( i = 1; i <= $NUM; i++ ))
     INSYNC_AUTH_CODE=INSYNC${i}_AUTH_CODE
 
     mkdir -p /data/${!INSYNC_USERNAME}
-    print_info "Starting insync-headless for '${!INSYNC_USERNAME}'"
+    print_start "Starting insync-headless for '${!INSYNC_USERNAME}'"
     done
 
 liftoff

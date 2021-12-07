@@ -5,7 +5,7 @@ services:
     image: tiredofit/insync
     container_name: insync-app
     environment:
-      - ZABBIX_HOSTNAME=insync-app
+      - CONTAINER_NAME=insync-app
 
       - INSYNC1_USERNAME=user@gmail.com
       - INSYNC1_AUTH_CODE=12345
