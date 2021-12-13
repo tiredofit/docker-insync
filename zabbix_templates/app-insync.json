@@ -1,0 +1,128 @@
+{
+    "zabbix_export": {
+        "version": "5.4",
+        "date": "2021-12-13T15:10:29Z",
+        "groups": [
+            {
+                "uuid": "a571c0d144b14fd4a87a9d9b2aa9fcd6",
+                "name": "Templates/Applications"
+            }
+        ],
+        "templates": [
+            {
+                "uuid": "2683925d920e4e4a803fbdc74ffbc97f",
+                "template": "Insync",
+                "name": "Insync",
+                "description": "Tool to monitor https://insynchq.com synchronization tool for Google Drive\n\nThis is specifically meant to be used with https://github.com/tiredofit/docker-insync",
+                "groups": [
+                    {
+                        "name": "Templates/Applications"
+                    }
+                ],
+                "items": [
+                    {
+                        "uuid": "20e44fa84e224908bfd93179e26260f9",
+                        "name": "Accounts",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "insync.accounts.num",
+                        "delay": "15m",
+                        "history": "7d",
+                        "request_method": "POST",
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Insync"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "75d78a2e7aa54f3baeef6023afb3ac02",
+                        "name": "Total Files Synced",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "insync.files.total",
+                        "delay": "60m",
+                        "history": "7d",
+                        "request_method": "POST",
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Insync"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "9d1af32259d54deaa0c5fc4ff4425a1d",
+                        "name": "Total Files Synced Size",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "insync.files.totalsize",
+                        "delay": "60m",
+                        "history": "7d",
+                        "request_method": "POST",
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Insync"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "97adc2612a3146838fa81f4aca290f44",
+                        "name": "Sync Status",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "insync.syncstatus",
+                        "delay": "15m",
+                        "history": "7d",
+                        "trends": "0",
+                        "value_type": "TEXT",
+                        "request_method": "POST",
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "Insync"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "9077f690d21f45059cf19517c578c501",
+                                "expression": "find(/Insync/insync.syncstatus,,\"like\",\"SYNCING\")=0",
+                                "name": "Not syncing any files",
+                                "status": "DISABLED",
+                                "priority": "HIGH"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "graphs": [
+            {
+                "uuid": "ec837e2b466449d89d9ad8f7ae5ecd06",
+                "name": "Total Files Synced",
+                "show_triggers": "NO",
+                "graph_items": [
+                    {
+                        "color": "1A7C11",
+                        "item": {
+                            "host": "Insync",
+                            "key": "insync.files.total"
+                        }
+                    }
+                ]
+            },
+            {
+                "uuid": "2206f19365054036b2a91a724805ff1c",
+                "name": "Total Files Synced Size",
+                "show_triggers": "NO",
+                "graph_items": [
+                    {
+                        "color": "1A7C11",
+                        "item": {
+                            "host": "Insync",
+                            "key": "insync.files.totalsize"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

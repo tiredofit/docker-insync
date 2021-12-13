@@ -1,3 +1,9 @@
+## 2.4.0 2021-12-13 <dave at tiredofit dot ca>
+
+   ### Changed
+      - Refresh Zabbix configuration
+
+
 ## 2.3.2 2021-12-07 <dave at tiredofit dot ca>
 
    ### Added
