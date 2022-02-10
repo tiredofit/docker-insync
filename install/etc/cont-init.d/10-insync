@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bash
+#!/command/with-contenv bash
 
 source /assets/functions/00-container
 prepare_service
@@ -18,13 +18,7 @@ if [ -d "/root/.config/Insync" ]; then
   chown -R insync: /data/.config/Insync
 fi
 
-if var_true "${CONTAINER_ENABLE_MONITORING}" && [ "${CONTAINER_MONITORING_BACKEND,,}" = "zabbix" ]; then
-  source /assets/defaults/03-monitoring
-  cat <<EOF > "${ZABBIX_CONFIG_PATH}"/"${ZABBIX_CONFIG_FILE}.d"/tiredofit_insync.conf
-# Zabbix Insync Configuration - Automatically Generated
-# Find Companion Zabbix Server Templates at https://github.com/tiredofit/docker-insync
-# Autoregister=insync
-EOF
+create_zabbix insync
 fi
 
 ### Sudo Hack for entering inside the container

@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bash
+#!/command/with-contenv bash
 
 INSYNC1_DOWNLOAD=${INSYNC1_DOWNLOAD:-"open-document"}
 PROXY_MODE=${PROXY_MODE:-"NONE"}
