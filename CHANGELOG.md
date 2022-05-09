@@ -1,3 +1,8 @@
+## 2.4.3 2022-05-05 <dddpaul at google dot com>
+
+   ### Changed
+      - Remove extra "fi" keyword
+
 ## 2.4.2 2022-02-09 <dave at tiredofit dot ca>
 
    ### Changed
