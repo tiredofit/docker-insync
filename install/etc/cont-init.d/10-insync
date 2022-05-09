@@ -19,7 +19,6 @@ if [ -d "/root/.config/Insync" ]; then
 fi
 
 create_zabbix insync
-fi
 
 ### Sudo Hack for entering inside the container
 echo "alias insync-headless='sudo -u insync insync-headless'" > /root/.bashrc
