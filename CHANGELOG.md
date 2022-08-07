@@ -1,3 +1,9 @@
+## 2.4.4 2022-08-06 <dave at tiredofit dot ca>
+
+   ### Added
+      - Start using custom_scripts and custom_files functions from base
+
+
 ## 2.4.3 2022-05-05 <dddpaul at google dot com>
 
    ### Changed
