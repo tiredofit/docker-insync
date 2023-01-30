@@ -1,7 +1,7 @@
 # github.com/tiredofit/docker-insync
 
 [![GitHub release](https://img.shields.io/github/v/tag/tiredofit/docker-insync?style=flat-square)](https://github.com/tiredofit/docker-insync/releases/latest)
-[![Build Status](https://img.shields.io/github/workflow/status/tiredofit/docker-insync/build?style=flat-square)](https://github.com/tiredofit/docker-insync/actions?query=workflow%3Abuild)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/tiredofit/docker-insync.git/main.yml?branch=main&style=flat-square)](https://github.com/tiredofit/docker-insync.git/actions)
 [![Docker Stars](https://img.shields.io/docker/stars/tiredofit/insync.svg?style=flat-square&logo=docker)](https://hub.docker.com/r/tiredofit/insync/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/tiredofit/insync.svg?style=flat-square&logo=docker)](https://hub.docker.com/r/tiredofit/insync/)
 [![Become a sponsor](https://img.shields.io/badge/sponsor-tiredofit-181717.svg?logo=github&style=flat-square)](https://github.com/sponsors/tiredofit)
