@@ -1,7 +1,7 @@
 # github.com/tiredofit/docker-insync
 
 [![GitHub release](https://img.shields.io/github/v/tag/tiredofit/docker-insync?style=flat-square)](https://github.com/tiredofit/docker-insync/releases/latest)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/tiredofit/docker-insync.git/main.yml?branch=main&style=flat-square)](https://github.com/tiredofit/docker-insync.git/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/tiredofit/docker-insyncmain.yml?branch=main&style=flat-square)](https://github.com/tiredofit/docker-insync.git/actions)
 [![Docker Stars](https://img.shields.io/docker/stars/tiredofit/insync.svg?style=flat-square&logo=docker)](https://hub.docker.com/r/tiredofit/insync/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/tiredofit/insync.svg?style=flat-square&logo=docker)](https://hub.docker.com/r/tiredofit/insync/)
 [![Become a sponsor](https://img.shields.io/badge/sponsor-tiredofit-181717.svg?logo=github&style=flat-square)](https://github.com/sponsors/tiredofit)
@@ -52,7 +52,7 @@ Clone this repository and build the image with `docker build <arguments> (imagen
 Builds of the image are available on [Docker Hub](https://hub.docker.com/r/tiredofit/insync)
 
 ```bash
-docker pull docker.io/tiredofdit/insync:(imagetag)
+docker pull docker.io/tiredofit/insync:(imagetag)
 ```
 
 Builds of the image are also available on the [Github Container Registry](https://github.com/tiredofit/docker-insync/pkgs/container/docker-insync) 
@@ -93,7 +93,7 @@ The following directories are used for configuration and can be mapped for persi
 
 #### Base Images used
 
-This image relies on an [Alpine Linux](https://hub.docker.com/r/tiredofit/debian) base image that relies on an [init system](https://github.com/just-containers/s6-overlay) for added capabilities. Outgoing SMTP capabilities are handlded via `msmtp`. Individual container performance monitoring is performed by [zabbix-agent](https://zabbix.org). Additional tools include: `bash`,`curl`,`less`,`logrotate`,`nano`,`vim`.
+This image relies on an [Alpine Linux](https://hub.docker.com/r/tiredofit/debian) base image that relies on an [init system](https://github.com/just-containers/s6-overlay) for added capabilities. Outgoing SMTP capabilities are handlded via `msmtp`. Individual container performance monitoring is performed by [zabbix-agent](https://zabbix.org). Additional tools include: `bash`,`curl`,`less`,`logrotate`,`nano`.
 
 Be sure to view the following repositories to understand all the customizable options:
 
